@@ -10,6 +10,7 @@ doc8 = "*"
 [packages]
 rst2pdf = "~=0.94.0"
 matplotlib = "~=2.2.0"
+acs-examine-student-assignment = "~=1.0"
 
 [requires]
 python_version = "2.7"
