@@ -1,0 +1,77 @@
+# When comparing the program output against expected output any line that
+# doesn't end with a number is going to be ignored
+
+
+example:
+  input: |
+    5
+  expected-output: |
+    clan[i=0] =  1.000000
+    clan[i=1] = -1.000000
+    clan[i=2] =  0.500000
+    clan[i=3] = -0.166667
+    clan[i=4] =  0.041667
+
+    sum = 0.375000
+
+    e = 2.666667
+
+
+n=10:
+  input: |
+    10
+  expected-output: |
+    clan[i=0] =  1.000000
+    clan[i=1] = -1.000000
+    clan[i=2] =  0.500000
+    clan[i=3] = -0.166667
+    clan[i=4] =  0.041667
+    clan[i=5] = -0.008333
+    clan[i=6] =  0.001389
+    clan[i=7] = -0.000198
+    clan[i=8] =  0.000025
+    clan[i=9] = -0.000003
+
+    sum = 0.367879
+
+    e = 2.718284
+
+
+n-is-too-low:
+  input: |
+    -2
+    -1
+    0
+
+    1
+  expected-output: |
+    clan[i=0] =  1.000000
+
+    sum = 1.000000
+
+    e = 1.000000
+
+
+n=1:
+  input: |
+    1
+  expected-output: |
+    clan[i=0] =  1.000000
+
+    sum = 1.000000
+
+    e = 1.000000
+
+
+n=4:
+  input: |
+    4
+  expected-output: |
+    clan[i=0] =  1.000000
+    clan[i=1] = -1.000000
+    clan[i=2] =  0.500000
+    clan[i=3] = -0.166667
+
+    sum = 0.333333
+
+    e = 3.000000
