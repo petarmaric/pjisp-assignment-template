@@ -18,7 +18,7 @@ endif
 
 .PHONY: help
 help: ## Display this help message
-	@echo "Usage: make \033[36m[TARGET]\033[0m...\n\nTargets:"
+	@echo "Usage: make \033[36m[TARGET]\033[0m \033[32m[quiet=1]\033[0m ...\n\nTargets:"
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ { \
 		printf "  \033[36m%-16s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
@@ -56,3 +56,12 @@ assignment: assignment-clean assignment-pack assignment-view ## Build, view and 
 .PHONY: extract-exams
 extract-exams: ## Extract student assignments from exam archives
 	acs_extract_student_assignments --archives-dir $(ARCHIVES_DIR) --extract-dir $(EXTRACT_DIR) $(VERBOSITY)
+
+examine: ## Examine student assignment
+ifndef computer
+	@echo "Usage: make examine \033[32m[quiet=1]\033[0m computer=\033[36mCOMPUTER\033[0m\n"
+	@echo "Where \033[36mCOMPUTER\033[0m is within the range of \033[36ms100\033[0m to \033[36ms131\033[0m," \
+		  "or \033[36ms200\033[0m to \033[36ms231\033[0m"
+else
+	acs_examine_student_assignment $(computer) --extract-dir $(EXTRACT_DIR) $(VERBOSITY)
+endif
