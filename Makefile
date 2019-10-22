@@ -1,5 +1,8 @@
 RST_MAINFILE = assignment_all.rst
 
+ARCHIVES_DIR = archives
+EXTRACT_DIR = extracted
+
 
 # Please don't touch the following settings
 DIR_NAME := $(shell basename "$(CURDIR)")
@@ -7,6 +10,10 @@ ASSIGNMENT_PDF := "assignment $(DIR_NAME).pdf"
 ASSIGNMENT_ARCHIVE := "assignment_packed_for_students $(DIR_NAME).tar.gz"
 SMOKE_TEST_VERSION := $(shell pipenv lock -r | grep smoke-test | awk -F "==" '{ print $$NF }')
 SMOKE_TEST_PEX_URL := https://github.com/petarmaric/smoke_test/releases/download/$(SMOKE_TEST_VERSION)/smoke_test-$(SMOKE_TEST_VERSION).pex
+
+ifdef quiet
+	VERBOSITY = --quiet
+endif
 
 
 .PHONY: help
@@ -23,7 +30,7 @@ smoke_test.pex:
 
 .PHONY: test-solution
 test-solution: smoke_test.pex ## Test your assignment solution
-	./$< assignment_solution.c
+	./$< assignment_solution.c $(VERBOSITY)
 
 
 .PHONY: assignment-clean
@@ -44,3 +51,8 @@ assignment-pack: test-solution assignment-build ## Pack the student assignment
 
 .PHONY: assignment
 assignment: assignment-clean assignment-pack assignment-view ## Build, view and pack the student assignment
+
+
+.PHONY: extract-exams
+extract-exams: ## Extract student assignments from exam archives
+	acs_extract_student_assignments --archives-dir $(ARCHIVES_DIR) --extract-dir $(EXTRACT_DIR) $(VERBOSITY)
