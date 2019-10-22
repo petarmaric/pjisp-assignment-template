@@ -6,3 +6,4 @@ smoke_test.pex
 assignment_packed_for_students *.tar.gz
 archives/*.tar
 extracted/
+assignment_grading.txt
