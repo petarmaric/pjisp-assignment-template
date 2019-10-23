@@ -40,6 +40,7 @@ assignment-clean: ## Remove all generated student assignment files
 .PHONY: assignment-build
 assignment-build: ## Build the student assignment PDF
 	rst2pdf $(RST_MAINFILE) -o $(ASSIGNMENT_PDF) -s a4,freetype-serif
+	@echo "Finished building, the PDF has been saved to '$(ASSIGNMENT_PDF)'"
 
 .PHONY: assignment-view
 assignment-view: assignment-build ## View the student assignment PDF
@@ -48,6 +49,7 @@ assignment-view: assignment-build ## View the student assignment PDF
 .PHONY: assignment-pack
 assignment-pack: test-solution assignment-build ## Pack the student assignment
 	tar -czf $(ASSIGNMENT_ARCHIVE) smoke_test.pex fixtures/ assignment.c $(ASSIGNMENT_PDF)
+	@echo "Finished packing, the archive has been saved to '$(ASSIGNMENT_ARCHIVE)'"
 
 .PHONY: assignment
 assignment: assignment-clean assignment-pack assignment-view ## Build, view and pack the student assignment
