@@ -1,0 +1,118 @@
+voce:
+  args: voce $input_filename $output_filename
+  input: |
+    CrvenaPaprika 190 povrce
+    Grejpfrut      29 voce
+    Jagoda         60 voce
+    Kivi           89 voce
+    Krompir        20 povrce
+    Limun          40 voce
+    Paradajz       10 povrce
+    PilecaJetra    13 meso
+    Pomorandza     50 voce
+    Spanac         30 povrce
+  expected-output: |
+    190 CrvenaPaprika povrce
+     29 Grejpfrut     voce
+     60 Jagoda        voce
+     89 Kivi          voce
+     20 Krompir       povrce
+     40 Limun         voce
+     10 Paradajz      povrce
+     13 PilecaJetra   meso
+     50 Pomorandza    voce
+     30 Spanac        povrce
+
+    Namirnica sa najvise vitamina C je:
+     89 Kivi          voce
+
+povrce:
+  args: povrce $input_filename $output_filename
+  input: |
+    CrvenaPaprika 190 povrce
+    Grejpfrut      29 voce
+    Jagoda         60 voce
+    Kivi           89 voce
+    Krompir        20 povrce
+    Limun          40 voce
+    Paradajz       10 povrce
+    PilecaJetra    13 meso
+    Pomorandza     50 voce
+    Spanac         30 povrce
+  expected-output: |
+    190 CrvenaPaprika povrce
+     29 Grejpfrut     voce
+     60 Jagoda        voce
+     89 Kivi          voce
+     20 Krompir       povrce
+     40 Limun         voce
+     10 Paradajz      povrce
+     13 PilecaJetra   meso
+     50 Pomorandza    voce
+     30 Spanac        povrce
+
+    Namirnica sa najvise vitamina C je:
+    190 CrvenaPaprika povrce
+
+
+meso:
+  args: meso $input_filename $output_filename
+  input: |
+    CrvenaPaprika 190 povrce
+    Grejpfrut      29 voce
+    Jagoda         60 voce
+    Kivi           89 voce
+    Krompir        20 povrce
+    Limun          40 voce
+    Paradajz       10 povrce
+    PilecaJetra    13 meso
+    Pomorandza     50 voce
+    Spanac         30 povrce
+  expected-output: |
+    190 CrvenaPaprika povrce
+     29 Grejpfrut     voce
+     60 Jagoda        voce
+     89 Kivi          voce
+     20 Krompir       povrce
+     40 Limun         voce
+     10 Paradajz      povrce
+     13 PilecaJetra   meso
+     50 Pomorandza    voce
+     30 Spanac        povrce
+
+    Namirnica sa najvise vitamina C je:
+     13 PilecaJetra   meso
+
+
+sorted-asc:
+  args: voce $input_filename $output_filename
+  input: |
+    Limun          40 voce
+    Pomorandza     50 voce
+    Jagoda         60 voce
+    Kivi           89 voce
+  expected-output: |
+    40 Limun         voce
+    50 Pomorandza    voce
+    60 Jagoda        voce
+    89 Kivi          voce
+
+    Namirnica sa najvise vitamina C je:
+    89 Kivi          voce
+
+
+sorted-desc:
+  args: voce $input_filename $output_filename
+  input: |
+    Kivi           89 voce
+    Jagoda         60 voce
+    Pomorandza     50 voce
+    Limun          40 voce
+  expected-output: |
+    89 Kivi          voce
+    60 Jagoda        voce
+    50 Pomorandza    voce
+    40 Limun         voce
+
+    Namirnica sa najvise vitamina C je:
+    89 Kivi          voce

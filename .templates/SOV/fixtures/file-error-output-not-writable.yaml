@@ -1,0 +1,14 @@
+invalid-path:
+  args: voce $input_filename CANT/WRITE/TO/FAKE/DIR/invalid-path.out
+  input: |
+    CrvenaPaprika 190 povrce
+    Grejpfrut      29 voce
+    Jagoda         60 voce
+    Kivi           89 voce
+    Krompir        20 povrce
+    Limun          40 voce
+    Paradajz       10 povrce
+    PilecaJetra    13 meso
+    Pomorandza     50 voce
+    Spanac         30 povrce
+  expected-returncode: 2
