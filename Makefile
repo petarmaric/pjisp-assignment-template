@@ -6,6 +6,8 @@ EXTRACT_DIR = extracted
 
 # Please don't touch the following settings
 DIR_NAME := $(shell basename "$(CURDIR)")
+TEMPLATES_DIR := .templates
+TEST_IDS := $(shell ls -m $(TEMPLATES_DIR))
 ASSIGNMENT_PDF := "assignment $(DIR_NAME).pdf"
 ASSIGNMENT_ARCHIVE := "assignment_packed_for_students $(DIR_NAME).tar.gz"
 SMOKE_TEST_VERSION := $(shell pipenv lock -r | grep smoke-test | awk -F "==" '{ print $$NF }')
@@ -22,6 +24,20 @@ help: ## Display this help message
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ { \
 		printf "  \033[36m%-16s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
+
+
+.PHONY: init
+init: ## Initialize the assignment template
+ifndef template
+	@echo "Usage: make init template=\033[36mTEST_ID\033[0m\n"
+	@echo "Where \033[36mTEST_ID\033[0m can be: $(TEST_IDS)"
+else
+	cp -r $(TEMPLATES_DIR)/$(template)/. .
+endif
+
+.PHONY: init-revert
+init-revert:
+	rm -rf $(shell ls $(TEMPLATES_DIR)/T12) smoke_test.pex
 
 
 smoke_test.pex:
