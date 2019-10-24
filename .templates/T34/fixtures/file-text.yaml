@@ -1,0 +1,40 @@
+example:
+  args: 23.5 $input_filename $output_filename
+  input: |
+    JAT       150.0 2.5 1.5
+    Wizz       52.3 0.0 7.0
+    Lufthansa 210.0 7.0 2.5
+    Delta     180.0 6.5 1.0
+  expected-output: |
+     181.50 JAT
+     216.80 Wizz
+     251.25 Lufthansa
+     197.00 Delta
+
+
+m=0:
+  args: 0.0 $input_filename $output_filename
+  input: |
+    JAT       150.0 2.5 1.5
+    Wizz       52.3 0.0 7.0
+    Lufthansa 210.0 7.0 2.5
+    Delta     180.0 6.5 1.0
+  expected-output: |
+     150.00 JAT
+      52.30 Wizz
+     210.00 Lufthansa
+     180.00 Delta
+
+
+m=7:
+  args: 7.0 $input_filename $output_filename
+  input: |
+    JAT       150.0 2.5 1.5
+    Wizz       52.3 0.0 7.0
+    Lufthansa 210.0 7.0 2.5
+    Delta     180.0 6.5 1.0
+  expected-output: |
+     156.75 JAT
+     101.30 Wizz
+     210.00 Lufthansa
+     180.50 Delta

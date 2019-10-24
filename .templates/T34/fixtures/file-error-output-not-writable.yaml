@@ -1,0 +1,8 @@
+invalid-path:
+  args: 23.5 $input_filename CANT/WRITE/TO/FAKE/DIR/invalid-path.out
+  input: |
+    JAT       150.0 2.5 1.5
+    Wizz       52.3 0.0 7.0
+    Lufthansa 210.0 7.0 2.5
+    Delta     180.0 6.5 1.0
+  expected-returncode: 2
