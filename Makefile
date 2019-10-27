@@ -5,13 +5,13 @@ EXTRACT_DIR = extracted
 
 
 # Please don't touch the following settings
-DIR_NAME := $(shell basename "$(CURDIR)")
-TEMPLATES_DIR := .templates
-TEST_IDS := $(shell ls -m $(TEMPLATES_DIR))
-ASSIGNMENT_PDF := "assignment $(DIR_NAME).pdf"
-ASSIGNMENT_ARCHIVE := "assignment_packed_for_students $(DIR_NAME).tar.gz"
-SMOKE_TEST_VERSION := $(shell pipenv lock -r | grep smoke-test | awk -F "==" '{ print $$NF }')
-SMOKE_TEST_PEX_URL := https://github.com/petarmaric/smoke_test/releases/download/$(SMOKE_TEST_VERSION)/smoke_test-$(SMOKE_TEST_VERSION).pex
+DIR_NAME = $(shell basename "$(CURDIR)")
+TEMPLATES_DIR = .templates
+TEST_IDS = $(shell ls -m $(TEMPLATES_DIR))
+ASSIGNMENT_PDF = "assignment $(DIR_NAME).pdf"
+ASSIGNMENT_ARCHIVE = "assignment_packed_for_students $(DIR_NAME).tar.gz"
+SMOKE_TEST_VERSION = $(shell pipenv lock -r | grep smoke-test | awk -F "==" '{ print $$NF }')
+SMOKE_TEST_PEX_URL = https://github.com/petarmaric/smoke_test/releases/download/$(SMOKE_TEST_VERSION)/smoke_test-$(SMOKE_TEST_VERSION).pex
 
 ifdef quiet
 	VERBOSITY = --quiet
