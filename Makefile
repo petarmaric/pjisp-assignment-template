@@ -37,16 +37,12 @@ endif
 
 .PHONY: init-revert
 init-revert:
-	rm -rf $(shell ls $(TEMPLATES_DIR)/T12) smoke_test.pex
+	rm -rf $(shell ls $(TEMPLATES_DIR)/T12)
 
-
-smoke_test.pex:
-	wget $(SMOKE_TEST_PEX_URL) -O $@ || rm -f $@
-	chmod +x $@
 
 .PHONY: test-solution
-test-solution: smoke_test.pex ## Test your assignment solution
-	./$< assignment_solution.c $(VERBOSITY)
+test-solution: ## Test your assignment solution
+	smoke_test assignment_solution.c $(VERBOSITY)
 
 
 .PHONY: assignment-clean
@@ -83,3 +79,9 @@ ifndef computer
 else
 	acs_examine_student_assignment $(computer) --extract-dir $(EXTRACT_DIR) $(VERBOSITY)
 endif
+
+
+update-dependencies:
+	pipenv update
+	wget $(SMOKE_TEST_PEX_URL) -O smoke_test.pex
+	chmod +x smoke_test.pex
