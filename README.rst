@@ -35,6 +35,16 @@ created repository to get started::
     $ git clone https://github.com/your-account/ASSIGNMENT_ID.git
     $ cd ASSIGNMENT_ID
 
+If you do not wish to install Python, pip or Pipenv on your system you can use
+the dockerized version of this project instead, by replacing all your ``make``
+calls, such as::
+
+    $ pipenv run make [TARGET] [quiet=1] ...
+
+with::
+
+    $ ./dockerized.sh [TARGET] [quiet=1] ...
+
 .. _`Use this repository template`: https://github.com/petarmaric/pjisp-assignment-template/generate
 
 Usage
@@ -46,6 +56,10 @@ Show help
 ::
 
     $ pipenv run make help
+
+    # dockerized version:
+    $ ./dockerized.sh help
+
     Usage: make [TARGET] [quiet=1] ...
 
     Targets:
@@ -71,6 +85,9 @@ Before creating an assignment you need to initialize the assignment template::
     $ pipenv install
     $ pipenv run make init template=TEST_ID
 
+    # dockerized version:
+    $ ./dockerized.sh init template=TEST_ID
+
 where ``TEST_ID`` can be ``T12``, ``T34`` or ``SOV``.
 
 Create a student assignment
@@ -88,13 +105,22 @@ Create a student assignment
 
     $ pipenv run make assignment-view
 
+    # dockerized version: 'assignment-view' won't work, please open the built PDF yourself
+    $ ./dockerized.sh assignment-build
+
 #. test your assignment solution::
 
     $ pipenv run make test-solution
 
+    # dockerized version:
+    $ ./dockerized.sh test-solution
+
 #. pack your assignment into an archive and prepare if for deployment to the ACS labs::
 
     $ pipenv run make assignment-pack
+
+    # dockerized version:
+    $ ./dockerized.sh assignment-pack
 
 #. push commits onto your assignment repository
 
@@ -144,12 +170,18 @@ Extract student assignments from exam archives
 
     $ pipenv run make extract-exams
 
+    # dockerized version:
+    $ ./dockerized.sh extract-exams
+
 Automated student assignment examination
 ----------------------------------------
 
 Examine (and then grade) each student assignment::
 
     $ pipenv run make examine computer=COMPUTER
+
+    # dockerized version:
+    $ ./dockerized.sh examine computer=COMPUTER
 
 where ``COMPUTER`` is within the range of ``s100`` to ``s131``, or ``s200`` to
 ``s231`` (depending on the ACS lab).
