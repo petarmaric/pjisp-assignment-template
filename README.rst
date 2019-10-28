@@ -9,8 +9,11 @@ deployment and examination.
 Installation
 ============
 
-`Use this repository template`_ to create a new repository named
-``pjisp-{SCHOOL_YEAR}-{COURSE_ID}-{TEST_ID}-{GROUP_ID}``, where:
+`Use this repository template`_ to create a new repository named::
+
+    pjisp-{SCHOOL_YEAR}-{COURSE_ID}-{TEST_ID}-{GROUP_ID}
+
+where:
 
 ``{SCHOOL_YEAR}``
     School year, for example ``2019``.
@@ -23,6 +26,10 @@ Installation
 
 ``{GROUP_ID}``
     Student group id, for example ``G10``.
+
+    It can be within the range of ``G1`` to ``G13`` for the winter semester, or
+    ``G1`` to ``G10`` for summer. In general, the student groups are assigned
+    in accordance to their weekly lab schedule.
 
 When creating your assignment repository please:
 
