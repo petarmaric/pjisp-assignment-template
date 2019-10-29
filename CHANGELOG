@@ -1,3 +1,13 @@
+pjisp-assignment-template 1.1.1 (October 29 2019)
+=================================================
+
+Bugfixes
+--------
+
+    * Add a.out to .gitignore.
+
+    * Updated README.rst with improved `{GROUP_ID}` description
+
 pjisp-assignment-template 1.1.0 (October 27 2019)
 =================================================
 
