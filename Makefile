@@ -70,6 +70,7 @@ assignment: assignment-clean assignment-pack assignment-view ## Build, view and 
 .PHONY: extract-exams
 extract-exams: ## Extract student assignments from exam archives
 	acs_extract_student_assignments --archives-dir $(ARCHIVES_DIR) --extract-dir $(EXTRACT_DIR) $(VERBOSITY)
+	acs_assignment_result_template
 
 examine: ## Examine student assignment
 ifndef computer
