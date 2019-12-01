@@ -1,5 +1,21 @@
-pjisp-assignment-template 1.1.1 (October 29 2019)
-=================================================
+pjisp-assignment-template 1.1.2 (December 1, 2019)
+==================================================
+
+Bugfixes
+--------
+
+    * Updated project dependencies and smoke_test.pex, due to a new smoke_test
+      release.
+
+    * Added gedit backup files to .gitignore.
+
+Refactoring
+-----------
+
+    * Optimized Dockerfile (#2).
+
+pjisp-assignment-template 1.1.1 (October 29, 2019)
+==================================================
 
 Bugfixes
 --------
@@ -8,8 +24,8 @@ Bugfixes
 
     * Updated README.rst with improved `{GROUP_ID}` description
 
-pjisp-assignment-template 1.1.0 (October 27 2019)
-=================================================
+pjisp-assignment-template 1.1.0 (October 27, 2019)
+==================================================
 
 Feature additions
 -----------------
