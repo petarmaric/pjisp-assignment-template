@@ -1,8 +1,9 @@
-FROM python:2-slim
+FROM python:2.7-slim
 
 WORKDIR /app
 ARG DEBIAN_FRONTEND=noninteractive
 ARG PIP_NO_CACHE_DIR=0
+
 ENTRYPOINT ["make"]
 
 RUN set -x \
