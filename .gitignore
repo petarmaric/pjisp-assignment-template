@@ -7,3 +7,4 @@ archives/*.tar
 extracted/
 assignment_grading.txt
 a.out
+*~
