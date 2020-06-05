@@ -33,24 +33,31 @@ ifndef template
 	@echo "Where \033[36mTEST_ID\033[0m can be: $(TEST_IDS)"
 else
 	cp -r $(TEMPLATES_DIR)/$(template)/. .
+	echo $(template) > .template
 endif
 
 .PHONY: init-revert
 init-revert:
 	rm -rf $(shell ls $(TEMPLATES_DIR)/T12)
 
-
 .PHONY: test-solution
-test-solution: ## Test your assignment solution
-	smoke_test assignment_solution.c $(VERBOSITY)
+test-solution: assignment_solution.c ## Test your assignment solution
+	smoke_test assignment_solution.c -e $(VERBOSITY)
 
+.PHONY: assignment-diff
+assignment-diff: assignment_solution.c ## Check if the correct files are changed
+	pjisp_diff $(shell cat .template)
+	@echo "Finished checking if the correct files are changed"
+
+.PHONY: assignment-check
+assignment-check: assignment-diff test-solution ## Check the file changes and test the assignment
 
 .PHONY: assignment-clean
 assignment-clean: ## Remove all generated student assignment files
 	rm -f $(ASSIGNMENT_PDF) $(ASSIGNMENT_ARCHIVE)
 
 .PHONY: assignment-build
-assignment-build: ## Build the student assignment PDF
+assignment-build: assignment.rst ## Build the student assignment PDF
 	rst2pdf $(RST_MAINFILE) -o $(ASSIGNMENT_PDF) -s a4,freetype-serif
 	@echo "Finished building, the PDF has been saved to '$(ASSIGNMENT_PDF)'"
 
@@ -59,7 +66,7 @@ assignment-view: assignment-build ## View the student assignment PDF
 	xdg-open $(ASSIGNMENT_PDF)
 
 .PHONY: assignment-pack
-assignment-pack: test-solution assignment-build ## Pack the student assignment
+assignment-pack: assignment-check assignment-build ## Pack the student assignment
 	tar -czf $(ASSIGNMENT_ARCHIVE) smoke_test.pex fixtures/ assignment.c $(ASSIGNMENT_PDF)
 	@echo "Finished packing, the archive has been saved to '$(ASSIGNMENT_ARCHIVE)'"
 
