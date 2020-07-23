@@ -1,0 +1,26 @@
+name: Project create
+
+on:
+  create
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: add_badge
+      run: |
+        REPO=${{github.repository}}
+        echo "|Actions Status|
+          
+        .. |Actions Status| image:: https://github.com/$REPO/workflows/PJISP%20assignment/badge.svg
+           :alt: CPython build status on GitHub Actions
+           :target: https://github.com/$REPO/actions
+        " | cat - README.rst > README
+        mv README README.rst
+    - name: push_changes
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "github"
+        git commit -am "Add Badge to README.rst"
+        git push

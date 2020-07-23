@@ -1,0 +1,26 @@
+name: PJISP assignment
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 2.7
+      if: ${{ ! contains(github.repository,'pjisp-assignment-template') }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: 2.7
+    - name: Install pipenv
+      if: ${{ ! contains(github.repository,'pjisp-assignment-template') }}
+      uses: dschep/install-pipenv-action@v1
+    - name: Run test
+      if: ${{ ! contains(github.repository,'pjisp-assignment-template') }}
+      run: |
+        pipenv install
+        pipenv run make assignment-check
