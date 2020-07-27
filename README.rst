@@ -36,11 +36,17 @@ When creating your assignment repository please:
 - make sure the repository is set to **private** access
 - add your professor(s) as repository collaborator(s)
 
-This project doesn't require system wide installation, simply clone your newly
+This project doesn't require system wide installation. Wait for the repository to create and simply clone your newly
 created repository to get started::
 
     $ git clone https://github.com/your-account/ASSIGNMENT_ID.git
     $ cd ASSIGNMENT_ID
+    
+You will know that the repository is ready when you see the PJISP Assigment badge appear in the project description:
+
+.. image:: badge.svg
+
+If it lasts too long, check the Actions tab for progress.
 
 If you do not wish to install Python, pip or Pipenv on your system you can use
 the dockerized version of this project instead, by replacing all your ``make``
@@ -71,8 +77,9 @@ Show help
 
     Targets:
       help              Display this help message
-      init              Initialize the assignment template
+      init              Manually initialize the assignment template
       test-solution     Test your assignment solution
+      assignment-check  Check the file changes and test the assignment
       assignment-clean  Remove all generated student assignment files
       assignment-build  Build the student assignment PDF
       assignment-view   View the student assignment PDF
@@ -84,18 +91,14 @@ Show help
 Using ``make TARGET quiet=1`` will make most of the targets to be quiet,
 showing only warnings and errors.
 
-Initialize the assignment template
+Install the dependencies
 ----------------------------------
 
-Before creating an assignment you need to initialize the assignment template::
+Before creating an assignment you need to install the dependencies::
 
     $ pipenv install
-    $ pipenv run make init template=TEST_ID
-
-    # dockerized version:
-    $ ./dockerized.sh init template=TEST_ID
-
-where ``TEST_ID`` can be ``T12``, ``T34`` or ``SOV``.
+    
+Skip this step if you are using the dockerized version.
 
 Create a student assignment
 ---------------------------
@@ -130,6 +133,8 @@ Create a student assignment
     $ ./dockerized.sh assignment-pack
 
 #. push commits onto your assignment repository
+
+#. make sure that you change all the files related to the assignment and that all of the tests pass. The badge should be green now
 
 #. inform the professor(s) that your assignment repository is ready for review
 

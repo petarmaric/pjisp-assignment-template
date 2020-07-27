@@ -25,6 +25,13 @@ help: ## Display this help message
 		printf "  \033[36m%-16s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
 
+.PHONY: get-template
+get-template: ## Get the assignment template name
+ifndef repo_name
+	@echo "Usage: make get-template repo_name=<repo name>"
+else
+	@pjisp_template_name $(repo_name)
+endif
 
 .PHONY: init
 init: ## Initialize the assignment template

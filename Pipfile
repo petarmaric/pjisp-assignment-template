@@ -13,6 +13,7 @@ matplotlib = "~=2.2.0"
 acs-examine-student-assignment = "~=1.0"
 acs-extract-student-assignments = "~=1.0.1"
 pjisp-diff = "~=0.1.8"
+pjisp-template-name = "~=0.2.0"
 
 [requires]
 python_version = "2.7"
