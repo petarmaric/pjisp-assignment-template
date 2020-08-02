@@ -8,6 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Set up Python 2.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 2.7
+    - name: Install pipenv
+      uses: dschep/install-pipenv-action@v1
+    - name: init_template
+      run: |
+        REPO=$(echo ${{github.repository}} | cut -d "/" -f 2)
+        pipenv install
+        TEMPLATE=$(pipenv run make get-template repo_name=$REPO)
+        pipenv run make init template=$TEMPLATE
     - name: add_badge
       run: |
         REPO=${{github.repository}}
@@ -22,5 +34,6 @@ jobs:
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "github"
-        git commit -am "Add Badge to README.rst"
+        git add .
+        git commit -m "Init template"
         git push
