@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f92d0043d97a79fd3352a24c91092b4b365789e4178c4f138717adce38244507"
+            "sha256": "df428e840b11f2909871c0a9137493386aa37d3856ccfd0c5d397f52159f1e18"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -273,11 +273,11 @@
         },
         "pjisp-template-name": {
             "hashes": [
-                "sha256:8d9d9972df344a494e516cf77e1899cc39d798af27a63554d44099cf4980db8d",
-                "sha256:fa8b6ffb976c1ca054c469f7906ee15d4d90b024dc97fab995e9c5b6f922750f"
+                "sha256:3b1f49a964b10a68ebf10ac48430a95c000b2cc2be2e91d3aa306d757b320306",
+                "sha256:71c5fc8b6c3ba86894ba81f38a454b7ca50847a6754b510335d0ca051ddcb05a"
             ],
             "index": "pypi",
-            "version": "==0.1.1"
+            "version": "==0.2.0"
         },
         "pycparser": {
             "hashes": [
