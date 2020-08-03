@@ -1,3 +1,17 @@
+pjisp-assignment-template 1.2.0 (August 3, 2020)
+================================================
+
+Feature additions
+-----------------
+
+    * Added a GitHub actions workflow for creating assignments and testing
+      their solutions (#4, #5).
+
+Bugfixes
+--------
+
+    * Fixed outdated Pipfile.lock issues (#6).
+
 pjisp-assignment-template 1.1.2 (December 1, 2019)
 ==================================================
 
